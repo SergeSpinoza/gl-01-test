@@ -17,3 +17,7 @@ Host ga02
 	user username
         hostname ip/host
 	ProxyCommand  ssh username@ga01 -W %h:%p
+
+
+bastion_ip 35.240.121.87
+someinternalhost_ip 10.132.0.3
