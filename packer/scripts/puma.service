@@ -1,0 +1,14 @@
+[Unit]
+Description=PumaService
+Requires=mongod.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/gangybas/reddit
+User=gangybas
+Group=gangybas
+OOMScoreAdjust=-1000
+ExecStart=/usr/bin/bundle exec puma
+
+[Install]
+WantedBy=multi-user.target
