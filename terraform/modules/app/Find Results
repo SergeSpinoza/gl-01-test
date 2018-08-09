@@ -1,0 +1,18 @@
+Searching 21 files for "ip_db"
+
+/Users/user/github/gl-01-test/terraform/stage/.terraform/modules/3a5c67bb61ce8ccea23ef8b1acbe495e/files/puma.service:
+    7  User=gangybas
+    8  Group=gangybas
+    9: Environment=DATABASE_URL=${ip_db} 
+   10  OOMScoreAdjust=-1000
+   11  ExecStart=/usr/bin/bundle exec puma
+
+/Users/user/github/gl-01-test/terraform/stage/.terraform/modules/3a5c67bb61ce8ccea23ef8b1acbe495e/variables.tf:
+   17  }
+   18  
+   19: variable ip_db {
+   20  	description = "enter your ip db"
+   		default = "127.0.0.1"
+   21  }
+
+2 matches across 2 files

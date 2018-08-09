@@ -1,5 +1,6 @@
 # gl-01-test
-111
+
+
 #подключение командой через промежуточный сервер
 ssh -i ~/.ssh/rsa_key -tA user@host ssh user@host
 
