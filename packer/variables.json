@@ -1,0 +1,10 @@
+{   
+    "proj_id": "gangybas-infra",
+    "machine_type": "f1-micro",
+    "source_image_family": "ubuntu-1604-lts",
+    "disk_size": "10",
+    "disk_type": "pd-standard",
+    "image_description": "gangybas-obraz",
+    "network": "default",
+    "tags": "gangybas-xxx"
+}
