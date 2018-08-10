@@ -56,3 +56,38 @@ gcloud compute firewall-rules create puma-web-open \
 
 testapp_ip = 35.233.93.6
 testapp_port = 9292
+
+
+
+homework 07
+
+Задание со *:
+ключи указываются без пробела
+
+main.tf
+
+
+ metadata {
+    ssh-keys = "app-user:${file(var.public_key_path)}app-user2:${file(var.public_key_path)}"
+  }
+
+
+variables.tf
+
+variable public_key_path {
+  description = "Path to the public key used for ssh access"
+}
+
+terraform.tfvars
+
+public_key_path = "~/.ssh/app-user.pub"
+
+
+задание с **:
+
+1. из проблем достаточно большое колличество посторонних ресурсов для поднятия балансера
+2. при копировании машины это занимает большое колличества места в коде а так же приходится прописывать эти машины в группу для добавление в балансер что крайне не удобно.
+3. добавление инстанса производитсячерез опцию count  в name прописать count.index к имени 
+
+
+
