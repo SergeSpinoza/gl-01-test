@@ -19,5 +19,8 @@ variable ssh_connections {
 
 variable ip_db {
   description = "enter your ip db"
-  default     = "127.0.0.1"
+}
+
+variable provisions {
+	description = "enter true or false"
 }

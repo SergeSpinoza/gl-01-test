@@ -1,35 +1,41 @@
 # gl-01-test
 
 
-#подключение командой через промежуточный сервер
-ssh -i ~/.ssh/rsa_key -tA user@host ssh user@host
+##Подключение командой через промежуточный сервер:
 
-#подключение скокращенной командой по аллиасу (доп. задание)
+```ssh -i ~/.ssh/rsa_key -tA user@host ssh user@host```
 
-создать в папке ~/.ssh/ файл config
-и прописать сдел:
+##Подключение сокращенной командой по аллиасу (доп. задание):
 
+создать в папке
+` ~/.ssh/`  файл config
+и прописать следующее:
+
+``` 
 Host ga01
-	user username
-	hostname ip/host
-	identityfile ~/.ssh/rsa_key
-	
+  user username
+  hostname ip/host
+  identityfile ~/.ssh/rsa_key
+  
 Host ga02
-	user username
+  user username
         hostname ip/host
-	ProxyCommand  ssh username@ga01 -W %h:%p
+  ProxyCommand  ssh username@ga01 -W %h:%p
 
 
 bastion_ip 35.240.121.87
 someinternalhost_ip 10.132.0.3
 
+```
+
+================================================================================
 
 
+#Homework-6 
 
-Homewirk 6 
+_создание виртуальной машины:_
 
-создание виртуальный машины: 
-
+```
 gcloud compute instances create reddit-app\
   --boot-disk-size=10GB \
   --image-family ubuntu-1604-lts \
@@ -37,14 +43,20 @@ gcloud compute instances create reddit-app\
   --machine-type=g1-small \
   --tags puma-server \
   --restart-on-failure \
-#Взять скрипт стартап из удаленного репозитория
-  --metadata startup-script-url=gs://gangybas/startup_scrypt.sh 
-#Взять скприпт стартап из локальной машины из домашней директориии юзера
-#--metadata-from-file startup-script=startup_scrypt.sh 
+```
+  
+####Взять скрипт startup из удаленного репозитория:
+
+ ``` --metadata startup-script-url=gs://gangybas/startup_scrypt.sh ```
+ 
+####Взять скрипт startup из локальной машины домашней директориии юзера:
+
+```--metadata-from-file startup-script=startup_scrypt.sh ```
 
 
-Создание правила фаервола:
+####Создание правила фаервола:
 
+```
 gcloud compute firewall-rules create puma-web-open \
     --network default \
     --action allow \
@@ -53,42 +65,73 @@ gcloud compute firewall-rules create puma-web-open \
     --source-ranges 0.0.0.0/0 \
     --priority 1000 \
     --target-tags puma-server
-  
+```
+####Адрес для покдлючения:
 
+```   
 testapp_ip = 35.233.93.6
 testapp_port = 9292
+```
+
+
+================================================================================
 
 
 
-homework 07
 
-Задание со *:
-ключи указываются без пробела
+#homework-07
 
-main.tf
+####Задание со *:
 
+__Ключи указываются без пробела в main.tf__
 
+пример:
+
+__main.tf__
+
+```
  metadata {
     ssh-keys = "app-user:${file(var.public_key_path)}app-user2:${file(var.public_key_path)}"
   }
+```
 
+__variables.tf__
 
-variables.tf
-
+```
 variable public_key_path {
   description = "Path to the public key used for ssh access"
 }
+```
+__terraform.tfvars__
 
-terraform.tfvars
-
+```
 public_key_path = "~/.ssh/app-user.pub"
-
+```
 
 задание с **:
 
 1. из проблем достаточно большое колличество посторонних ресурсов для поднятия балансера
 2. при копировании машины это занимает большое колличества места в коде а так же приходится прописывать эти машины в группу для добавление в балансер что крайне не удобно.
-3. добавление инстанса производитсячерез опцию count  в name прописать count.index к имени 
+3. добавление инстанса производится через опцию __count__ в name прописать __count.index__ к имени.
+
+
+
+
+
+================================================================================
+
+
+#Homework-08
+
+
+
+Весь код переведен в модули __app__ и __db__
+ 
+
+1. При запуске кода база и приложение находятся на разных инстансах. 
+2. Реализовано подключение по внутреннему ip к базе mongodb. 
+3. Реализованно включение и отключение провиженнеров.
+
 
 
 
