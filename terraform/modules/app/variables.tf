@@ -22,5 +22,5 @@ variable ip_db {
 }
 
 variable provisions {
-	description = "enter true or false"
+  description = "enter true or false"
 }
