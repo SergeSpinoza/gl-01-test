@@ -34,8 +34,7 @@ variable db_disk_image {
   default     = "reddit-db-1533721204"
 }
 
-
 variable provisions {
   description = "enter true or false"
-  default = "false"
+  default     = "false"
 }
