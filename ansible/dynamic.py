@@ -11,7 +11,7 @@ except ImportError:
     import simplejson as json
 
 #path to scrypt :
-url = "/Users/user/github/gl-01-test/ansible/"
+url = "/Users/gangybas/test/gl-01-test/ansible/"
 
 class ExampleInventory(object):
 
@@ -40,8 +40,8 @@ class ExampleInventory(object):
     def empty_inventory(self):
         return {'_meta': {'hostvars': {}}}
 
-    def test1(self)
-        return json.loads(open(url+'ansible.json').read())
+   # def test1(self)
+   #     return json.loads(open(url+'ansible.json').read())
 
     # Read the command line args passed to the script.
     def read_cli_args(self):
