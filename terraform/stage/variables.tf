@@ -33,3 +33,8 @@ variable db_disk_image {
   description = "Disk image for reddit db"
   default     = "reddit-db-1533721204"
 }
+
+variable provisions {
+  description = "enter true or false"
+  default     = "false"
+}
