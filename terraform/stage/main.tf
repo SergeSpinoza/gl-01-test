@@ -1,6 +1,7 @@
 provider "google" {
   project = "${var.project}"
   region  = "${var.region}"
+  version = "1.4.0"
 }
 
 module "app" {

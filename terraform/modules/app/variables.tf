@@ -9,7 +9,7 @@ variable zone {
 
 variable app_disk_image {
   description = "Disk image for reddit app"
-  default     = "ansible-app"
+  default     = " reddit-app-1550422365"
 }
 
 variable ssh_connections {
