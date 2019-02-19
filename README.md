@@ -148,3 +148,53 @@ public_key_path = "~/.ssh/app-user.pub"
 2. Добавлен скрипт на python, который читает ansible.json (в формате json). Для проверки необходимо выполнить команду ansible all -i inventory.py -m ping
 
 
+# Homework-10
+
+## В процессе сделано:
+* Сделаны плейбуки для деплоя приложения на инстансы
+* сделан динамический инвентори
+
+## Как запустить проект:
+* Зайти в директорию terraform/stage
+  запустить terraform apply
+* В ansible.cfg указан динамический инвентори подключенный к gcloud что позволит запустить плейбук без введения дополнительной команды/
+* Можно измениит cfg и выбрать статический инвентори и указать в нем ip инстансов.
+* в директории ansible запустить `ansible-playbook site.yml` либо `ansible-playbook -i inventory site.yml`
+
+## Как проверить работоспособность:
+* перейти по ссылке http://app-ip:9292
+
+## Задание со *
+установка dynamic inventory gce.py
+установить библиотеки для питона:
+`apache-libcloud`
+`pycrypto`
+
+Создать сервисный аккаунт либо получить имеющуюся конфигурацию сервисного аккаунта в формате `json` и сохранить в папку с `ansible`.
+
+Клонировать репо
+`git clone https://github.com/ansible/ansible`
+Перенесети файлы в папку с ансиблом
+
+```
+cp ansible/contrib/inventory/gce.py ~/git/ansible/inventory/
+cp ansible/contrib/inventory/gce.ini ~/git/ansible/inventory/
+```
+сконфигураировать gce.ini
+
+```
+gce_service_account_email_address = # Service account email found in ansible json file
+gce_service_account_pem_file_path = # Path to ansible service account json file
+gce_project_id = # Your GCE project name
+```
+добавить глобальную переменную пути к gce.ini
+
+` export GCE_INI_PATH=~/git/ansible/gce.ini`
+
+проверить можно запустив скрипт
+`~/git/ansible/inventory/gce.py — list
+
+1. В данном задании были заробраны playbooks.
+2. Установлен динамический инвентарь gce.py для более удобного управления облачной инфраструктурой.
+3. интеграция провиженнера packer+ansible
+

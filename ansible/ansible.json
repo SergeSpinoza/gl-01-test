@@ -1,21 +1,21 @@
 {
     
 "app": {
-    "hosts": ["example_host"],
+    "hosts": ["104.199.62.9"],
      "vars": {
-        "ansible_ssh_user": "appuser",
+        "ansible_ssh_user": "gangybas",
         "ansible_ssh_private_key_file":
-        "~/.ssh/appuser",
+        "~/.ssh/google",
         "example_variable": "value"
         }
     },
 
 "db": {
-    "hosts": ["example_host"],
+    "hosts": ["35.240.36.41"],
      "vars": {
-        "ansible_ssh_user": "appuser",
+        "ansible_ssh_user": "gangybas",
         "ansible_ssh_private_key_file":
-        "~/.ssh/appuser",
+        "~/.ssh/google",
         "example_variable": "value"
         }
     }

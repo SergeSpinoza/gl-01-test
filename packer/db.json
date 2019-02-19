@@ -14,7 +14,7 @@
     "type": "googlecompute",
     "project_id": "{{user `proj_id`}}",
     "image_name": "reddit-db-{{timestamp}}",
-    "image_family": "reddit-base",
+    "image_family": "ansible-db",
     "source_image_family": "{{user `source_image_family`}}",
     "disk_size": "{{user `disk_size`}}",
     "disk_type": "{{user `disk_type`}}",
@@ -28,9 +28,8 @@
   ],
   "provisioners": [
     {
-      "type": "shell",
-      "script": "scripts/install_mongodb.sh",
-      "execute_command": "sudo {{.Path}}"
+     "type": "ansible",
+     "playbook_file": "../ansible/packer_db.yml"
     }
   ]
 }
